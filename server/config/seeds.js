@@ -1,4 +1,10 @@
-const db = require('./connection');
+const db = mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mernshopping', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
+
 const { User, Product, Category } = require('../models');
 
 db.once('open', async () => {
