@@ -1,10 +1,13 @@
-const db = mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mernshopping', {
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb+srv://herokuApps:password36@cluster0.w57kd.mongodb.net/reduxDB?retryWrites=true&w=majority",
+  {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
 });
-
+const db = mongoose.connection
 const { User, Product, Category } = require('../models');
 
 db.once('open', async () => {
